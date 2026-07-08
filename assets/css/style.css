@@ -1,2 +1,10 @@
 
+/* Targets the "Play me" button on the first page */
+.intro-button {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 

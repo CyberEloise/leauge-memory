@@ -8,3 +8,16 @@
     align-items: center;
 }
 
+body{
+    text-align: center;
+    font-family: ;
+}
+
+/*This covers */
+#memory-card-holder{
+    height: 532px;
+    width: 475px;
+    margin: 0 auto;
+    background-color: grey;
+
+}

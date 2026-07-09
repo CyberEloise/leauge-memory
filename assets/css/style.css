@@ -1,6 +1,7 @@
 
 /* Targets the "Play me" button on the first page */
 .intro-button {
+
     margin: 0;
     height: 100vh;
     display: flex;
@@ -9,15 +10,19 @@
 }
 
 body{
+
     text-align: center;
     font-family: Arial, Helvetica, sans-serif ;
 }
 
 /*This covers */
-#memory-card-holder{
+.memory-card-holder{
+
     height: 532px;
     width: 475px;
     margin: 0 auto;
-    background-color: grey;
+    background-color: white;
+    border: 10px solid #5e5e5e ;
+    display: flex;
 
 }

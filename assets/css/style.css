@@ -26,3 +26,9 @@ body{
     display: flex;
 
 }
+
+.card{
+    height: 128px;
+    width: 223px;
+    margin: auto;
+}

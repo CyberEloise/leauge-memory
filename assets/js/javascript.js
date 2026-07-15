@@ -18,4 +18,8 @@ const CARDS = [
     { id: 14, name: "zed", image: "assets/images/zed.png"},
 ];
 
+// making sure the back of the card is shown before the front card//
 const FLIPPED_CARD = "assets/images/back_of_card.png";
+
+// The container which the cards are rendered into //
+const gameBoard = document.getElementById("game-board");

@@ -4,7 +4,7 @@
 const CARDS = [
     { id: 1, name: "ahri", image: "assets/images/ahri.png" },
     { id: 2, name: "darius", image: "assets/images/darius.png"},
-    { id: 3, name: "ezreal", iamge: "assets/images/ezreal.png"},
+    { id: 3, name: "ezreal", image: "assets/images/ezreal.png"},
     { id: 4, name: "garen", image: "assets/images/garen.png"},
     { id: 5, name: "katarina", image: "assets/images/katarina.png"},
     { id: 6, name: "lee_sin", image: "assets/images/lee_sin.png"},
@@ -23,3 +23,129 @@ const FLIPPED_CARD = "assets/images/back_of_card.png";
 
 // The container which the cards are rendered into //
 const gameBoard = document.getElementById("game-board");
+
+// Game state
+
+let flippedCards = [];  /** cards that are flipped  */
+let matchedIds = [];  /**cards that already have been matches so you cant click them again */
+let lockBoard = [false];  /** whilst TRUE the clicks are ignored on an already matched pair */
+ 
+/* making sure each card is duplicated */
+
+function buildDeck() {
+    const deck = CARDS.flatMap(card => [ 
+        { ...card, uniqueId: `${card.id}-a` },
+         { ...card, uniqueId: `${card.id}-b` },
+
+    ]);
+    return shuffle(deck);
+}
+
+/* uses fisher-yates so its random - link in readME the website  https://stackoverflow.com/questions/59810241/how-to-fisher-yates-shuffle-a-javascript-array */
+function shuffle(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1 ));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+
+}
+
+/* too remember the board */ 
+
+function renderBoard(deck) {
+    gameBoard.innerHTML = "";
+
+   deck.forEach((card) => {
+    const cardEL = document.createElement("div");
+    cardEL.classList.add("card");
+    cardEL.dataset.id = card.id;
+    cardEL.dataset.uniqueId = card.uniqueId;
+
+    cardEL.innerHTML = `
+ 
+    <div class ="card-inner"> 
+       <div class ="card-front"> 
+          <img src="${FLIPPED_CARD}" alt ="card back">
+       </div>
+       <div class ="card-back">
+          <img src="${card.image}" alt="${card.name}">
+       </div>
+    </div>
+
+    `;
+
+    cardEL.addEventListener("click", () => handleCardClick(cardEL,card));
+    gameBoard.appendChild(cardEL);
+
+   });
+
+   function handleCardClick(cardEL, card) {
+    if (lockBoard) return;
+    if (cardEL.classList.contains("flipped")) return;
+    if (matchedIds.includes(card.id)) return;
+
+    cardEL.classList.add("flipped");
+    flippedCards.push({ el: cardEL, card });
+
+    if (flippedCards.length === 2) {
+        checkForMatch();
+    }
+   }
+
+   function checkForMatch() {
+    lockBoard = true;
+    const [first,second] = flippedCards;
+
+    const isMatch = first.card.id === second.card.id;
+
+    if (isMatch) {
+        matchedIds.push(first.card.id);
+        first.el.classList.add("matched");
+        second.el.classList.add("matched");
+        resetTurn();
+        checkForWin();
+    } else { 
+        setTimeout(() => { 
+            first.el.classList.remove("flipped");
+            second.el.classList.remove("flipped");
+            resetTurn();
+        }, 800);
+
+        }
+
+    }
+
+    function resetTurn() {
+        flippedCards = [];
+        lockBoard = false;
+    }
+
+    function checkForWin() {
+        if (matchedIds.length === CARDS.length)  {
+            setTimeout(() => {
+                alert("YOU WON!!!");
+            }, 300);        }
+    }
+
+    function startGame() {
+        matchedIds = [];
+        flippedCards = [];
+        lockBoard = false;
+        const deck = buildDeck ();
+        renderBoard(deck);
+    }
+
+    startGame();
+
+    
+    }
+   
+
+    
+
+   
+
+
+

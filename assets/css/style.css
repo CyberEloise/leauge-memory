@@ -181,11 +181,11 @@ body {
   object-fit: cover;
 }
  
-#grid-container .game-card-front {
+#grid-container .card-front {
   transform: rotateY(180deg);
 }
  
-#grid-container .game-card-back {
+#grid-container .card-back {
   transform: rotateY(0);
 }
  

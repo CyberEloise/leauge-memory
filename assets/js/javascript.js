@@ -212,21 +212,8 @@ startTimer();
     
 
 
+generateBoard();
 
-
-    function startGame() {
-        matchedIds = [];
-        flippedCards = [];
-        lockBoard = false;
-        const deck = buildDeck ();
-        renderBoard(deck);
-    }
-
-    startGame();
-
-    
-    }
-   
 
     
 

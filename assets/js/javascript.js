@@ -110,7 +110,7 @@ const deck = buildDeck();
 
 deck.forEach((card) => {
     const cardEL = document.createElement("div");
-      cardEL.classList.add("card");
+      cardEL.classList.add("game-card");
     cardEL.dataset.id = card.id;
     cardEL.dataset.uniqueId = card.uniqueId;
 

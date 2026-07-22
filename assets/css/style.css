@@ -98,5 +98,13 @@ body {
 }
 
 #rule-container ol {
-    
+    padding: 1.2rem;
 }
+
+#rule-container li {
+    margin-bottom: 0.6rem;
+    font-size: 1.5rem;
+}
+
+/* Game page */
+

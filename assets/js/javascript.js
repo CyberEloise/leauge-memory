@@ -100,34 +100,37 @@ incorrectDisplay.textContent = "Incorrect: 0";
 topHUD.append(backButton, scoreDisplay, timerDisplay, incorrectDisplay );
 gameAreaE1.appendChild(topHUD);
 
-/* too remember the board */ 
+/* Card grid */
 
-function renderBoard(deck) {
-    gameBoard.innerHTML = "";
+const gridContainer = document.getElement("div");
+gridContainer.id = "grid-container";
+gameAreaE1.appendChild(gridContainer);
 
-   deck.forEach((card) => {
+const deck = buildDeck();
+
+deck.forEach((card) => {
     const cardEL = document.createElement("div");
-    cardEL.classList.add("card");
+      cardEL.classList.add("card");
     cardEL.dataset.id = card.id;
     cardEL.dataset.uniqueId = card.uniqueId;
 
-    cardEL.innerHTML = `
- 
-    <div class ="card-inner"> 
-       <div class ="card-front"> 
-          <img src="${FLIPPED_CARD}" alt ="card back">
-       </div>
-       <div class ="card-back">
-          <img src="${card.image}" alt="${card.name}">
-       </div>
-    </div>
 
-    `;
+cardEL.innerHTML = `
+        <img src="${CARD_BACK_IMAGE}" alt="card back" class="card-back">
+        <img src="${card.image}" alt="${card.name}" class="card-front">
+      `;
 
-    cardEL.addEventListener("click", () => handleCardClick(cardEL,card));
-    gameBoard.appendChild(cardEL);
+      cardEL.addEventListener("click", () => handleCardClick(cardEL,card));
+      gridContainer.appendChild(cardEL);
 
-   });
+});
+
+startTimer();
+
+
+
+/* Flipping the cards */
+
 
    function handleCardClick(cardEL, card) {
     if (lockBoard) return;
@@ -145,24 +148,31 @@ function renderBoard(deck) {
    function checkForMatch() {
     lockBoard = true;
     const [first,second] = flippedCards;
-
     const isMatch = first.card.id === second.card.id;
 
     if (isMatch) {
+        handleMatch(first,second);
+      } else {
+        handleNoMatch(first,second)
+      }
+
+    }
+
+
+    function handleMatch(first,second) {
         matchedIds.push(first.card.id);
         first.el.classList.add("matched");
         second.el.classList.add("matched");
-        resetTurn();
-        checkForWin();
-    } else { 
-        setTimeout(() => { 
+    
+        score++;
+        document.getElementById("incorrect").textContent = `Incorrect: ${incorrectCount}`;
+
+
+        setTimeout(() => {
             first.el.classList.remove("flipped");
             second.el.classList.remove("flipped");
             resetTurn();
-        }, 800);
-
-        }
-
+        }, NO_MATCH_DELAY);
     }
 
     function resetTurn() {
@@ -172,10 +182,37 @@ function renderBoard(deck) {
 
     function checkForWin() {
         if (matchedIds.length === CARDS.length)  {
+            stopTimer();
             setTimeout(() => {
-                alert("YOU WON!!!");
+                alert(`CONGRATS YOU WON! Time: ${document.getElementById("timer").textContent.replace("Time:","")}-Incorrect flipss: ${incorrectCount}`);
             }, 300);        }
     }
+
+
+    /* Timer functions */
+
+    function startTimer() {
+        const timerDisplay = document.getElementById("timer");
+        timeElapsed = 0;
+
+        if (timerInterval) clearInterval(timerInterval);
+
+        timerInterval = setInterval(() => {
+            timeElapsed++;
+            const minutes = Math.floor(timeElapsed / 60);
+            const seconds = timeElapsed % 60;
+            timerDisplay.textContent = `Time: ${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+    }, 1000);
+  }
+        
+   function stopTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+   }
+    
+
+
+
 
     function startGame() {
         matchedIds = [];

@@ -11,7 +11,7 @@ const CARDS = [
     { id: 7, name: "leona", image: "assets/images/leona.png"},
     { id: 8, name: "lux", image: "assets/images/lux.png"},
     { id: 9, name: "miss_fortune", image: "assets/images/miss_fortune.png"},
-    { id: 10, name: "seraphine", image: "assets/images/serapahine.png"},
+    { id: 10, name: "seraphine", image: "assets/images/seraphine.png"},
     { id: 11, name: "thresh", image: "assets/images/thresh.png"},
     { id: 12, name: "vi", image: "assets/images/vi.png"},
     { id: 13, name: "yasuo", image: "assets/images/yasuo.png"},
@@ -170,7 +170,7 @@ startTimer();
         document.getElementById("score").textContent = `Score: ${score} / ${TOTAL_PAIRS}`;
 
         resetTurn();
-        checkForWin;
+        checkForWin();
     }
 
 
@@ -179,7 +179,7 @@ startTimer();
         document.getElementById("incorrect").textContent =`Incorrect: ${incorrectCount}`;
 
         setTimeout(() => {
-            first.el.classList.remove("fliped");
+            first.el.classList.remove("flipped");
             second.el.classList.remove("flipped");
             resetTurn();
             }, NO_MATCH_DELAY);

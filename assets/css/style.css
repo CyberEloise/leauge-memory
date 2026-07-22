@@ -181,19 +181,19 @@ body {
   object-fit: cover;
 }
  
-#grid-container .card-front {
+#grid-container .game-card-front {
   transform: rotateY(180deg);
 }
  
-#grid-container .card-back {
+#grid-container .game-card-back {
   transform: rotateY(0);
 }
  
-#grid-container .card.flipped .card-front {
+#grid-container .game-card.flipped .card-front {
   transform: rotateY(0);
 }
  
-#grid-container .card.flipped .card-back {
+#grid-container .game-card.flipped .card-back {
   transform: rotateY(180deg);
 }
 
@@ -201,7 +201,7 @@ body {
 /* different medias */
 
 @media (min-width: 768px) {
-  #grid-container .card {
+  #grid-container .game-card {
     width: 5.7rem;
     height: 8.5rem;
   }

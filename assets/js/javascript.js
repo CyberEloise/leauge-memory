@@ -30,9 +30,9 @@ const gameAreaE1 = document.getElementById("game-board")
 
 let flippedCards = [];  /** cards that are flipped  */
 let matchedIds = [];  /**cards that already have been matches so you cant click them again */
-let lockBoard = [false];  /** whilst TRUE the clicks are ignored on an already matched pair */
+let lockBoard = false;  /** whilst TRUE the clicks are ignored on an already matched pair */
 let score = 0;
-let incorrect count = 0;
+let incorrectCount = 0;
 let timerInterval = null;
 let timeElapsed = 0;
 
@@ -76,7 +76,7 @@ function shuffle(array) {
 
 function generateBoard() {
     gameAreaE1.innerHTML ="";
-}
+
 
 const backButton = document.createElement("button");
 backButton.classList.add("back-btn");
@@ -102,7 +102,7 @@ gameAreaE1.appendChild(topHUD);
 
 /* Card grid */
 
-const gridContainer = document.getElement("div");
+const gridContainer = document.createElement("div");
 gridContainer.id = "grid-container";
 gameAreaE1.appendChild(gridContainer);
 
@@ -116,7 +116,7 @@ deck.forEach((card) => {
 
 
 cardEL.innerHTML = `
-        <img src="${CARD_BACK_IMAGE}" alt="card back" class="card-back">
+        <img src="${FLIPPED_CARD}" alt="card back" class="card-back">
         <img src="${card.image}" alt="${card.name}" class="card-front">
       `;
 
@@ -126,6 +126,8 @@ cardEL.innerHTML = `
 });
 
 startTimer();
+
+}
 
 
 
@@ -163,7 +165,6 @@ startTimer();
         matchedIds.push(first.card.id);
         first.el.classList.add("matched");
         second.el.classList.add("matched");
-    
         score++;
         document.getElementById("incorrect").textContent = `Incorrect: ${incorrectCount}`;
 

@@ -21,9 +21,11 @@ const CARDS = [
 // making sure the back of the card is shown before the front card//
 const FLIPPED_CARD = "assets/images/back_of_card.png";
 
-// The container which the cards are rendered into //
-const gameBoard = document.getElementById("game-board");
+const TOTAL_PAIRS = CARDS.length;
 
+const NO_MATCH_DELAY = 800;
+
+const gameAreaE1 = document.getElementById("game-board")
 // Game state
 
 let flippedCards = [];  /** cards that are flipped  */
@@ -34,6 +36,18 @@ let incorrect count = 0;
 let timerInterval = null;
 let timeElapsed = 0;
 
+/* Event listener */
+
+document.addEventListener("click", (e) => {
+
+    if (e.target && e.target.classList.contains("back-btn")) {
+        stopTimer();
+        window.location.href ="index.html"
+    }
+})
+
+
+/* Game board */
 
 /* making sure each card is duplicated */
 
@@ -56,6 +70,35 @@ function shuffle(array) {
     return arr;
 
 }
+
+
+/* Building the card grind, back button, score, timer and incorrect counter */
+
+function generateBoard() {
+    gameAreaE1.innerHTML ="";
+}
+
+const backButton = document.createElement("button");
+backButton.classList.add("back-btn");
+backButton.textContent = "Back";
+
+const topHUD = document.createElement("div");
+topHUD.id = "top-hud";
+
+const scoreDisplay = document.createElement("div");
+scoreDisplay.id="score"
+scoreDisplay.textContent = `Score: 0 / ${TOTAL_PAIRS}`;
+
+const timerDisplay = document.createElement("div");
+timerDisplay.id = "timer";
+timerDisplay.textContent = "Time: 00:00";
+
+const incorrectDisplay = document.createElement("div");
+incorrectDisplay.id = "incorrect";
+incorrectDisplay.textContent = "Incorrect: 0";
+
+topHUD.append(backButton, scoreDisplay, timerDisplay, incorrectDisplay );
+gameAreaE1.appendChild(topHUD);
 
 /* too remember the board */ 
 

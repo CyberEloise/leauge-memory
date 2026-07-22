@@ -54,3 +54,49 @@ body {
 
 }
 
+
+/* Main page */
+
+#navigation { 
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    gap: 2rem;
+}
+
+#hero-title {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+/* Rules page */
+
+#rules-info {
+
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    gap: 2rem;
+    text-align: center;
+    padding: 2rem;
+}
+
+.rules-title { 
+    font-size: 2.5rem;
+}
+
+#rule-container {
+
+    background-color: #0c1018;
+    border: 2px solid;
+    border-color: #c89b3c;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    padding: 2rem;
+    text-align: left;
+}
+
+#rule-container ol {
+    
+}

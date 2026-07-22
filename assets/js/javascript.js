@@ -165,15 +165,12 @@ startTimer();
         matchedIds.push(first.card.id);
         first.el.classList.add("matched");
         second.el.classList.add("matched");
+
         score++;
-        document.getElementById("incorrect").textContent = `Incorrect: ${incorrectCount}`;
+        document.getElementById("score").textContent = `Score: ${score} / ${TOTAL_PAIRS}`;
 
-
-        setTimeout(() => {
-            first.el.classList.remove("flipped");
-            second.el.classList.remove("flipped");
-            resetTurn();
-        }, NO_MATCH_DELAY);
+        resetTurn();
+        checkForWin;
     }
 
     function resetTurn() {

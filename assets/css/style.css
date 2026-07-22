@@ -108,3 +108,14 @@ body {
 
 /* Game page */
 
+#game-board {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    place-items: center;
+    padding: 1rem;
+}
+
+
+
+/* Cards */

@@ -29,7 +29,12 @@ const gameBoard = document.getElementById("game-board");
 let flippedCards = [];  /** cards that are flipped  */
 let matchedIds = [];  /**cards that already have been matches so you cant click them again */
 let lockBoard = [false];  /** whilst TRUE the clicks are ignored on an already matched pair */
- 
+let score = 0;
+let incorrect count = 0;
+let timerInterval = null;
+let timeElapsed = 0;
+
+
 /* making sure each card is duplicated */
 
 function buildDeck() {

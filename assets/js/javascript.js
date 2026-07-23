@@ -44,12 +44,21 @@ document.addEventListener("click", (e) => {
         stopTimer();
         window.location.href ="index.html"
     }
-})
 
+
+   if (e.target && e.target.classList.contains("reset-btn")) {
+        stopTimer();
+        matchedIds = [];
+        flippedCards = [];
+        lockBoard = false;
+        score = 0;
+        incorrectCount = 0;
+        generateBoard();
+    }
+});
 
 /* Game board */
 
-/* making sure each card is duplicated */
 
 function buildDeck() {
     const deck = CARDS.flatMap(card => [ 
@@ -97,6 +106,10 @@ const incorrectDisplay = document.createElement("div");
 incorrectDisplay.id = "incorrect";
 incorrectDisplay.textContent = "Incorrect: 0";
 
+const resetButton = document.createElement("button");
+resetButton.classList.add("reset-btn");
+resetButton.textContent = "Reset";
+
 topHUD.append(backButton, scoreDisplay, timerDisplay, incorrectDisplay );
 gameAreaE1.appendChild(topHUD);
 
@@ -123,6 +136,8 @@ cardEL.innerHTML = `
       cardEL.addEventListener("click", () => handleCardClick(cardEL,card));
       gridContainer.appendChild(cardEL);
 
+
+  
 });
 
 startTimer();

@@ -228,13 +228,108 @@ body {
 
 /* different medias */
 
+
+/* small devices - 375px */
+
+@media (min-width: 375px) {
+
+    #hero-title {
+    font-size: 1.8rem;
+  }
+
+  .game-btn {
+    width: 240px;
+    height: 70px;
+    font-size: 20px;
+  }
+}
+
+.rules-btn {
+    width: 140px;
+    height: 45px;
+    font-size: 16px;
+  }
+
+  #grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  #grid-container .game-card {
+    width: 3.8rem;
+    height: 5.7rem;
+  }
+
+  #top-hud {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+/* 768 px tablet */
+
+
 @media (min-width: 768px) {
+  #hero-title {
+    font-size: 2.5rem;
+  }
+
+  .game-btn {
+    width: 280px;
+    height: 85px;
+    font-size: 24px;
+  }
+
+  #grid-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  #grid-container .game-card {
+    width: 4.8rem;
+    height: 7.2rem;
+  }
+
+  #top-hud {
+    flex-wrap: nowrap;
+    font-size: 1.1rem;
+  }
+}
+
+/* 992 px */
+
+@media (min-width: 992px) {
+  #hero-title {
+    font-size: 3rem;
+  }
+
+  .game-btn {
+    width: 330px;
+    height: 110px;
+    font-size: 28px;
+  }
+
+  #grid-container {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
   #grid-container .game-card {
     width: 5.7rem;
     height: 8.5rem;
   }
- 
-  #game-title {
-    font-size: 4rem; }
+}
 
+/* 1440px */
+
+@media (min-width: 1440px) {
+  #hero-title {
+    font-size: 4rem;
   }
+
+  #grid-container .game-card {
+    width: 6.2rem;
+    height: 9.2rem;
+  }
+
+  #grid-container {
+    gap: 1.5rem;
+  }
+}

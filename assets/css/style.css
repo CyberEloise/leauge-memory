@@ -19,9 +19,13 @@ body {
 
 .back-btn {
 
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
     background-color: #0c1018;
     color: #f4ecd8;
     border: 2px solid;
+    padding: 0.8rem 1.4rem;
     border-color: #c89b3c;
     cursor: pointer;
     font-weight: bold;
@@ -29,9 +33,9 @@ body {
 
 .rules-btn {
 
-    width: 140px;
-    height: 45px;
-    font-size: 16px;
+    width: 180px;
+    height: 55px;
+    font-size: 20px;
     background-color: #0c1018;
     color: #f4ecd8;
     border: 2px solid;
@@ -42,9 +46,9 @@ body {
 
 .game-btn {
 
-    width: 260px;
-    height: 80px;
-    font-size: 28px;
+    width: 330px;
+    height: 110px;
+    font-size: 24px;
     background-color: #0c1018;
     color: #f4ecd8;
     border: 2px solid;
@@ -58,10 +62,12 @@ body {
 /* Main page */
 
 #navigation { 
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     min-height: 100vh;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 #hero-title {
@@ -120,14 +126,16 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-top: 1rem;
+    padding: 1.5rem 2rem;
+    font-size: 1.3rem;
 }
 
 #score {
 
     background-color: #0c1018;
+    border: 2px solid;
     border-radius: 8px;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1.4rem;
     border-color: #c89b3c;
     font-weight: bold;
 }
@@ -135,8 +143,9 @@ body {
 #timer {
 
     background-color: #0c1018;
+    border: 2px solid;
     border-radius: 8px;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1.4rem;
     border-color: #c89b3c;
     font-weight: bold;
 }
@@ -144,8 +153,9 @@ body {
 #incorrect {
  
     background-color: #0c1018;
+    border: 2px solid;
     border-radius: 8px;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1.4rem;
     border-color: #c89b3c;
     font-weight: bold;
 }
@@ -155,8 +165,8 @@ body {
 #grid-container {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 0.75rem;
-    margin: 1.5rem auto;
+    gap: 1.2rem;
+    margin: 2rem auto;
     width:fit-content;
 }
 
@@ -209,4 +219,3 @@ body {
   #game-title {
     font-size: 4rem;
   }
-}

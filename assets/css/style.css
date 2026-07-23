@@ -68,6 +68,7 @@ body {
     border-radius: 8px;
     padding: 1rem 1.4rem;
     font-weight: bold;
+    font-size: medium;
     cursor: pointer;
 }
 
@@ -204,6 +205,8 @@ body {
   object-fit: cover;
 }
  
+/* card animation */
+
 #grid-container .card-front {
   transform: rotateY(180deg);
 }
@@ -232,4 +235,4 @@ body {
   #game-title {
     font-size: 4rem; }
 
-  
+  }

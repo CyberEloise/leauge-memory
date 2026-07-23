@@ -110,7 +110,7 @@ const resetButton = document.createElement("button");
 resetButton.classList.add("reset-btn");
 resetButton.textContent = "Reset";
 
-topHUD.append(backButton, scoreDisplay, timerDisplay, incorrectDisplay );
+topHUD.append(backButton, scoreDisplay, timerDisplay, incorrectDisplay, );
 gameAreaE1.appendChild(topHUD);
 
 /* Card grid */
@@ -139,6 +139,8 @@ cardEL.innerHTML = `
 
   
 });
+
+gameAreaE1.appendChild(resetButton);
 
 startTimer();
 

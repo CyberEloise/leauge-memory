@@ -1,39 +1,36 @@
-
-
 /** My cards with IDS names and an image path */
 const CARDS = [
-    { id: 1, name: "ahri", image: "assets/images/ahri.png" },
-    { id: 2, name: "darius", image: "assets/images/darius.png"},
-    { id: 3, name: "ezreal", image: "assets/images/ezreal.png"},
-    { id: 4, name: "garen", image: "assets/images/garen.png"},
-    { id: 5, name: "katarina", image: "assets/images/katarina.png"},
-    { id: 6, name: "lee_sin", image: "assets/images/lee_sin.png"},
-    { id: 7, name: "leona", image: "assets/images/leona.png"},
-    { id: 8, name: "lux", image: "assets/images/lux.png"},
-    { id: 9, name: "miss_fortune", image: "assets/images/miss_fortune.png"},
-    { id: 10, name: "seraphine", image: "assets/images/seraphine.png"},
-    { id: 11, name: "thresh", image: "assets/images/thresh.png"},
-    { id: 12, name: "vi", image: "assets/images/vi.png"},
-    { id: 13, name: "yasuo", image: "assets/images/yasuo.png"},
-    { id: 14, name: "zed", image: "assets/images/zed.png"},
-];
+    { id: 1, image: "assets/images/ahri.png", name: "ahri" },
+    { id: 2, image: "assets/images/darius.png", name: "darius"},
+    { id: 3, image:  "assets/images/ezreal.png", name: "ezreal"},
+    { id: 4, image: "assets/images/garen.png", name: "garen"},
+    { id: 5, image: "assets/images/katarina.png", name: "katarina"},
+    { id: 6, image: "assets/images/lee_sin.png", name: "lee_sin"},
+    { id: 7, image: "assets/images/leona.png", name: "leona"},
+    { id: 8, image: "assets/images/lux.png", name: "lux"},
+    { id: 9, image: "assets/images/miss_fortune.png", name: "miss_fortune"},
+    { id: 10, image: "assets/images/seraphine.png", name: "seraphine"},
+    { id: 11, image: "assets/images/thresh.png", name: "thresh"},
+    { id: 12, image: "assets/images/vi.png", name: "vi"},
+    { id: 13, image: "assets/images/yasuo.png", name: "yasuo"},
+    { id: 14, image: "assets/images/zed.png", name: "zed"}];
 
 // making sure the back of the card is shown before the front card//
+
 const FLIPPED_CARD = "assets/images/back_of_card.png";
 
 const TOTAL_PAIRS = CARDS.length;
 
 const NO_MATCH_DELAY = 800;
 
-const gameAreaE1 = document.getElementById("game-board")
+const gameAreaE1 = document.getElementById("game-board");
 // Game state
-
  /** cards that are flipped  */
-let flippedCards = []; 
+let flippedCards = [];
 /**cards that already have been matches so you cant click them again */
-let matchedIds = [];  
+let matchedIds = [];
 /** whilst TRUE the clicks are ignored on an already matched pair */
-let lockBoard = false;  
+let lockBoard = false;
 let score = 0;
 let incorrectCount = 0;
 let timerInterval = null;
@@ -45,9 +42,8 @@ document.addEventListener("click", (e) => {
 
     if (e.target && e.target.classList.contains("back-btn")) {
         stopTimer();
-        window.location.href ="index.html"
+        window.location.href = "index.html"
     }
-
 
    if (e.target && e.target.classList.contains("reset-btn")) {
         stopTimer();
@@ -62,17 +58,16 @@ document.addEventListener("click", (e) => {
 
 /* Game board */
 
-
 function buildDeck() {
-    const deck = CARDS.flatMap(card => [ 
+    const deck = CARDS.flatMap((card) => [
         { ...card, uniqueId: `${card.id}-a` },
-         { ...card, uniqueId: `${card.id}-b` },
+         { ...card, uniqueId: `${card.id}-b` }
 
     ]);
     return shuffle(deck);
 }
 
-/* uses fisher-yates so its random - link in readME the website  https://stackoverflow.com/questions/59810241/how-to-fisher-yates-shuffle-a-javascript-array */
+/* uses fisher-yates so its random - link in readME the website  */
 function shuffle(array) {
     const arr = [...array];
     for (let i = arr.length - 1; i > 0; i--) {
@@ -86,7 +81,6 @@ function shuffle(array) {
 
 function generateBoard() {
     gameAreaE1.innerHTML ="";
-
 
 const backButton = document.createElement("button");
 backButton.classList.add("back-btn");
@@ -179,7 +173,8 @@ startTimer();
         second.el.classList.add("matched");
 
         score++;
-        document.getElementById("score").textContent = `Score: ${score} / ${TOTAL_PAIRS}`;
+        document.getElementById("score").textContent =
+        `Score: ${score} / ${TOTAL_PAIRS}`;
 
         resetTurn();
         checkForWin();
@@ -188,7 +183,8 @@ startTimer();
 
     function handleNoMatch(first,second) {
         incorrectCount++;
-        document.getElementById("incorrect").textContent =`Incorrect: ${incorrectCount}`;
+        document.getElementById("incorrect").textContent =
+        `Incorrect: ${incorrectCount}`;
 
         setTimeout(() => {
             first.el.classList.remove("flipped");
@@ -197,7 +193,6 @@ startTimer();
             }, NO_MATCH_DELAY);
 
         }
-            
 
     function resetTurn() {
         flippedCards = [];
@@ -208,12 +203,12 @@ startTimer();
         if (matchedIds.length === CARDS.length)  {
             stopTimer();
             setTimeout(() => {
-                alert(`congratulations you won Time: ${document.getElementById("timer").textContent.replace("Time:","")}-Incorrect flipss: ${incorrectCount}`);
-            }, 300);        }
+                alert(`congratulations you won Time:
+                 ${document.getElementById("timer").textContent.replace
+                 ("Time:","")}-Incorrect flipss: ${incorrectCount}`);
+            }, 300);  }
     }
-
     /* Timer functions */
-
     function startTimer() {
         const timerDisplay = document.getElementById("timer");
         timeElapsed = 0;
@@ -224,21 +219,22 @@ startTimer();
             timeElapsed++;
             const minutes = Math.floor(timeElapsed / 60);
             const seconds = timeElapsed % 60;
-            timerDisplay.textContent = `Time: ${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+            timerDisplay.textContent = 
+            `Time: ${minutes.toString().padStart(2, "0")}
+            :${seconds.toString().padStart(2, "0")}`;
     }, 1000);
   }
-        
    function stopTimer() {
     clearInterval(timerInterval);
     timerInterval = null;
    }
-    
+
 generateBoard();
 
 
-    
 
-   
+
+
 
 
 

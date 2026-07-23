@@ -28,9 +28,12 @@ const NO_MATCH_DELAY = 800;
 const gameAreaE1 = document.getElementById("game-board")
 // Game state
 
-let flippedCards = [];  /** cards that are flipped  */
-let matchedIds = [];  /**cards that already have been matches so you cant click them again */
-let lockBoard = false;  /** whilst TRUE the clicks are ignored on an already matched pair */
+ /** cards that are flipped  */
+let flippedCards = []; 
+/**cards that already have been matches so you cant click them again */
+let matchedIds = [];  
+/** whilst TRUE the clicks are ignored on an already matched pair */
+let lockBoard = false;  
 let score = 0;
 let incorrectCount = 0;
 let timerInterval = null;
@@ -205,7 +208,7 @@ startTimer();
         if (matchedIds.length === CARDS.length)  {
             stopTimer();
             setTimeout(() => {
-                alert(`CONGRATS YOU WON! Time: ${document.getElementById("timer").textContent.replace("Time:","")}-Incorrect flipss: ${incorrectCount}`);
+                alert(`congratulations you won Time: ${document.getElementById("timer").textContent.replace("Time:","")}-Incorrect flipss: ${incorrectCount}`);
             }, 300);        }
     }
 

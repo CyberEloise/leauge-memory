@@ -58,6 +58,19 @@ body {
 
 }
 
+.reset-btn {
+    width: 200px;
+    height: 110px;
+    background-color: #0c1018;
+    color: #f4ecd8;
+    border: 2px solid;
+    border-color: #c89b3c;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 
 /* Main page */
 
@@ -217,5 +230,6 @@ body {
   }
  
   #game-title {
-    font-size: 4rem;
-  }
+    font-size: 4rem; }
+
+  

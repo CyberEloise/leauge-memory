@@ -79,8 +79,6 @@ function shuffle(array) {
     return arr;
 
 }
-
-
 /* Building the card grind, back button, score, timer and incorrect counter */
 
 function generateBoard() {
@@ -136,8 +134,6 @@ cardEL.innerHTML = `
       cardEL.addEventListener("click", () => handleCardClick(cardEL,card));
       gridContainer.appendChild(cardEL);
 
-
-  
 });
 
 gameAreaE1.appendChild(resetButton);
@@ -145,9 +141,6 @@ gameAreaE1.appendChild(resetButton);
 startTimer();
 
 }
-
-
-
 /* Flipping the cards */
 
 
@@ -176,7 +169,6 @@ startTimer();
       }
 
     }
-
 
     function handleMatch(first,second) {
         matchedIds.push(first.card.id);
@@ -217,7 +209,6 @@ startTimer();
             }, 300);        }
     }
 
-
     /* Timer functions */
 
     function startTimer() {
@@ -239,8 +230,6 @@ startTimer();
     timerInterval = null;
    }
     
-
-
 generateBoard();
 
 

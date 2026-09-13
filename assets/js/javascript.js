@@ -203,9 +203,8 @@ startTimer();
         if (matchedIds.length === CARDS.length)  {
             stopTimer();
             setTimeout(() => {
-                alert(`congratulations you won Time:
-                 ${document.getElementById("timer").textContent.replace
-                 ("Time:","")}-Incorrect flipss: ${incorrectCount}`);
+                alert(`congratulations you wonTime:
+                 ${document.getElementById("timer").textContent.replace("Time:","")}Incorrect flips: ${incorrectCount}`);
             }, 300);  }
     }
     /* Timer functions */

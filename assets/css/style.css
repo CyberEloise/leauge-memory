@@ -6,6 +6,11 @@ body {
     color: #f4ecd8;
 }
 
+.not-found {
+text-align: center;
+font-size: large;
+}
+
 /* targets everything */
 
 * {
